@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Smith & Found — Andy Smith hunts estate sales, flea markets, auctions and back roads for interesting things and hard-to-find treasures.">
+  <title>Smith & Found | Andy Smith, Finder of Interesting Things</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="topbar">ANDY SMITH IS ON THE ROAD — LOOKING FOR THE THINGS OTHER PEOPLE MISS.</div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">SMITH <span>&</span> FOUND</a>
+      <div class="nav-links">
+        <a href="#about">About Andy</a>
+        <a href="#finds">Road Finds</a>
+        <a href="#where">Where's Andy?</a>
+        <a href="#find-it" class="btn">Put It on Andy's List</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content">
+        <span class="kicker">ANDY SMITH · FINDER OF INTERESTING THINGS</span>
+        <h1>Some people see old stuff. Andy sees what everyone else missed.</h1>
+        <p>Estate sales. Flea markets. Auctions. Small towns. Back roads. Andy goes where the interesting stuff is — and if there’s something you’ve been hunting for, put it on his list.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#find-it">Put It on Andy's List →</a>
+          <a class="btn ghost" href="#finds">See Road Finds</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section white">
+      <div class="container intro-grid">
+        <div>
+          <span class="kicker">MEET THE FINDER</span>
+          <h2>He isn't retired from finding. He's finally free to roam.</h2>
+          <div class="rule"></div>
+          <p class="lead">Andy Smith has spent years buying, spotting, trading and selling interesting things. These days he has more freedom, more road ahead of him, and no particular reason to drive past an estate sale.</p>
+          <p>He looks for old advertising, paper, tools, signs, collectibles, unusual household pieces, forgotten objects and the occasional thing that simply feels too good to leave behind.</p>
+          <p>The point isn't to own everything. The fun is in <strong>noticing what other people overlook</strong>, learning the story, and finding the right home for the right piece.</p>
+        </div>
+        <div class="intro-photo" role="img" aria-label="Vintage road-trip scene from Unsplash"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="kicker">HOW SMITH & FOUND WORKS</span>
+        <h2>A treasure hunt with a purpose.</h2>
+        <div class="cards">
+          <article class="card"><div class="card-body"><div class="card-icon">🔎</div><h3>Ask Andy to Find It</h3><p>Remember a bowl from Grandma's kitchen? A specific sign, tool, toy or oddball collectible? Tell Andy what you remember and he’ll keep an eye out.</p></div></article>
+          <article class="card"><div class="card-body"><div class="card-icon">🚙</div><h3>Follow the Road Finds</h3><p>Short stories and photos from estate sales, flea markets, antique shops and small-town detours — posted as Andy travels.</p></div></article>
+          <article class="card"><div class="card-body"><div class="card-icon">📦</div><h3>See Something Interesting?</h3><p>Andy’s finds may eventually land on eBay, at a market, or in a direct conversation. For now, Smith & Found is the trailhead.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="finds" class="section white">
+      <div class="container">
+        <span class="kicker">FROM THE ROAD</span>
+        <h2>Andy's latest finds & field notes.</h2>
+        <p class="lead">As Andy starts sending photos from the road, this page becomes his living travel-and-treasure journal.</p>
+        <div id="finds-grid" class="finds-grid"><div class="empty-state">Loading road finds…</div></div>
+      </div>
+    </section>
+
+    <section id="where" class="section tight">
+      <div class="container">
+        <div id="road-status" class="status"><p>Loading Andy's road status…</p></div>
+      </div>
+    </section>
+
+    <section id="find-it" class="section dark">
+      <div class="container form-wrap">
+        <div>
+          <span class="kicker">GIVE ANDY A MISSION</span>
+          <h2>What have you been trying to find?</h2>
+          <div class="rule"></div>
+          <p class="lead">A model number helps. So does a photo. But sometimes “my grandparents had one and I think it was green” is enough to start.</p>
+          <p>Submit the hunt. Andy will keep it in mind while he roams. There’s no promise he’ll find one — that’s what makes finding one fun.</p>
+        </div>
+
+        <form name="find-it" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="find-it">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div class="field"><label for="wanted">What are you looking for?</label><input id="wanted" name="wanted" required placeholder="Example: 1970s Hamm's beer sign"></div>
+          <div class="field"><label for="details">What do you remember about it?</label><textarea id="details" name="details" required placeholder="Color, size, brand, where you remember seeing it, model number, markings…"></textarea></div>
+          <div class="grid-2">
+            <div class="field"><label for="budget">Approximate budget</label><select id="budget" name="budget"><option>I'm not sure</option><option>Under $50</option><option>$50–$100</option><option>$100–$250</option><option>$250–$500</option><option>$500+</option></select></div>
+            <div class="field"><label for="condition">Condition</label><select id="condition" name="condition"><option>Andy's judgment</option><option>Excellent</option><option>Good</option><option>Any condition</option></select></div>
+          </div>
+          <div class="field"><label for="example">Upload a photo or example</label><input id="example" type="file" name="example" accept="image/*"></div>
+          <div class="grid-2">
+            <div class="field"><label for="name">Your name</label><input id="name" name="name" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" required></div>
+          </div>
+          <div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel"></div>
+          <button class="btn" type="submit">Put It on Andy's List →</button>
+          <p class="note">Submitting this form sends the request through the Smith & Found website. Andy can follow up if he spots a promising match.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container form-wrap">
+        <div>
+          <span class="kicker">HAVE SOMETHING INTERESTING?</span>
+          <h2>Show Andy what you've got.</h2>
+          <p class="lead">Cleaning out a basement, garage, collection or estate? Send a picture and a little context. Andy may recognize something worth a closer look.</p>
+        </div>
+        <form name="show-andy" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="show-andy">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div class="field"><label for="item">What is it?</label><input id="item" name="item" required></div>
+          <div class="field"><label for="item-story">What do you know about it?</label><textarea id="item-story" name="story"></textarea></div>
+          <div class="field"><label for="item-photo">Photo</label><input id="item-photo" type="file" name="photo" accept="image/*"></div>
+          <div class="grid-2"><div class="field"><label for="seller-name">Your name</label><input id="seller-name" name="name" required></div><div class="field"><label for="seller-email">Email</label><input id="seller-email" type="email" name="email" required></div></div>
+          <button class="btn alt" type="submit">Show Andy →</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact-strip">
+      <div class="container contact-inner">
+        <div><strong>SMITH & FOUND</strong><br><span>Andy Smith · Finder of Interesting Things</span></div>
+        <div><a href="mailto:minerinoregon@gmail.com">minerinoregon@gmail.com</a><br><a href="tel:+16516411990">651-641-1990</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="footer-brand">SMITH & FOUND</div><div class="small">The road-trip treasure journal of Andy Smith.</div></div>
+      <div class="small">Launch photography from Unsplash; real road photos will replace it as Andy sends them in. · <a href="/admin/">Road update portal</a></div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
