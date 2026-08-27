@@ -1,0 +1,61 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: road-finds
+    label: Road Finds
+    type: file
+    path: data/finds.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: location
+        label: Location
+        type: string
+      - name: story
+        label: Story
+        type: text
+      - name: status
+        label: Label
+        type: select
+        options:
+          values:
+            - Road Find
+            - Road Note
+            - For Sale
+            - Sold
+            - Keeper
+            - Mystery
+            - Your Hunt
+      - name: image
+        label: Photo
+        type: image
+
+  - name: road-status
+    label: Where's Andy?
+    type: file
+    path: data/status.json
+    format: json
+    fields:
+      - name: eyebrow
+        label: Small Heading
+        type: string
+      - name: headline
+        label: Headline
+        type: string
+      - name: location
+        label: General Location
+        type: string
+      - name: message
+        label: Road Update
+        type: text
+      - name: updated
+        label: Updated Date
+        type: string
