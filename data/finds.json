@@ -1,26 +1,11 @@
-[
-  {
-    "title": "The road is just getting started",
-    "date": "2026-08-27",
-    "location": "On the road",
-    "story": "Andy is out wandering, looking for the things other people pass by. Real finds and stories will start appearing here as he sends them in from the road.",
-    "status": "Road Note",
-    "image": "https://source.unsplash.com/900x700/?antique-market,vintage"
-  },
-  {
-    "title": "What catches Andy's eye?",
-    "date": "2026-08-27",
-    "location": "Estate sales, flea markets & back roads",
-    "story": "Old advertising, tools, paper, signs, unusual household pieces, collectibles and the occasional thing that simply has a story. There is no rigid list — that is part of the fun.",
-    "status": "What He Hunts",
-    "image": "https://source.unsplash.com/900x700/?vintage,collectibles,flea-market"
-  },
-  {
-    "title": "Looking for something specific?",
-    "date": "2026-08-27",
-    "location": "Anywhere Andy happens to roam",
-    "story": "Put it on Andy's list. A photo, memory, model number or half-remembered description may be enough. If he sees a promising match, he can get in touch.",
-    "status": "Your Hunt",
-    "image": "https://source.unsplash.com/900x700/?vintage-store,antiques"
-  }
-]
+{
+  "items": [
+    {
+      "title": "The first field note is waiting on Andy",
+      "date": "August 2026",
+      "location": "Somewhere in the Midwest",
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "story": "This placeholder disappears as soon as Andy posts his first real road find from his phone."
+    }
+  ]
+}

@@ -3,219 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Mission received by Smith & Found — Andy Smith, Finder of Interesting Things.">
+  <meta name="theme-color" content="#1f2523">
+  <meta name="description" content="Mission received by Smith & Found.">
   <title>Mission Received | Smith & Found</title>
   <link rel="stylesheet" href="/styles.css">
   <style>
-    body.thanks-page {
-      min-height: 100vh;
-      background: #171b19;
-      color: #fffdf8;
-    }
-    .thanks-shell {
-      min-height: calc(100vh - 38px);
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      padding: 64px 0;
+    body.thanks{min-height:100vh;background:#111513;color:white}
+    .thanks-wrap{
+      min-height:calc(100vh - 38px);
+      display:grid;
+      place-items:center;
+      padding:50px 0;
+      position:relative;
+      overflow:hidden;
       background:
-        linear-gradient(105deg, rgba(16,19,18,.94) 0%, rgba(16,19,18,.78) 47%, rgba(16,19,18,.48) 100%),
-        url('https://source.unsplash.com/1800x1200/?road-trip,antiques,americana') center/cover;
+        linear-gradient(100deg,rgba(13,15,14,.95),rgba(13,15,14,.68)),
+        url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=2000&q=85') center/cover;
     }
-    .thanks-shell::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
-      background-size: 28px 28px;
-      opacity: .13;
-      pointer-events: none;
+    .thanks-wrap:after{
+      content:"";
+      position:absolute;inset:0;
+      background:radial-gradient(circle at 75% 22%,rgba(213,166,74,.18),transparent 28%);
     }
-    .thanks-wrap {
-      position: relative;
-      z-index: 2;
-      width: min(1080px, calc(100% - 32px));
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 44px;
-      align-items: center;
+    .thanks-grid{
+      position:relative;z-index:2;
+      width:min(1080px,calc(100% - 32px));
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:46px;
+      align-items:center;
     }
-    .thanks-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: #fffdf8;
-      text-decoration: none;
-      font-family: 'Libre Franklin', sans-serif;
-      font-weight: 800;
-      letter-spacing: .11em;
-      font-size: .9rem;
-      margin-bottom: 32px;
+    .thanks-brand{
+      color:white;text-decoration:none;
+      font-family:'Libre Franklin',sans-serif;
+      font-weight:800;letter-spacing:.10em
     }
-    .thanks-brand .amp { color: var(--gold); }
-    .mission-kicker {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .19em;
-      font-weight: 800;
-      font-size: .78rem;
+    .thanks-brand b{color:var(--rust)}
+    .thanks-copy h1{
+      margin:18px 0;
+      max-width:8ch;
+      font-family:'Libre Franklin',sans-serif;
+      font-size:clamp(3.6rem,8vw,7rem);
+      line-height:.94;letter-spacing:-.055em
     }
-    .thanks-copy h1 {
-      margin-top: 12px;
-      font-size: clamp(3.4rem, 8vw, 7.2rem);
-      max-width: 780px;
+    .thanks-copy p{max-width:650px;color:rgba(255,255,255,.78);font-size:1.16rem}
+    .thanks-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .thanks-card{
+      position:relative;
+      padding:32px;
+      background:rgba(255,253,248,.97);
+      color:var(--ink);
+      border-radius:26px;
+      box-shadow:0 30px 100px rgba(0,0,0,.36);
+      transform:rotate(1deg)
     }
-    .thanks-copy .lead {
-      color: rgba(255,255,255,.82);
-      max-width: 670px;
-      font-size: 1.2rem;
+    .thanks-card:before{
+      content:"";
+      position:absolute;inset:12px;
+      border:1px dashed rgba(31,37,35,.24);
+      border-radius:18px
     }
-    .thanks-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+    .thanks-card>*{position:relative;z-index:1}
+    .mission-stamp{
+      width:112px;height:112px;
+      margin:-70px 0 18px auto;
+      display:grid;place-items:center;
+      border:5px double var(--rust);
+      border-radius:50%;
+      color:var(--rust);
+      background:rgba(255,253,248,.96);
+      font-family:'Libre Franklin',sans-serif;
+      font-weight:800;text-align:center;line-height:1.05;
+      transform:rotate(-10deg)
     }
-    .thanks-actions .ghost-light {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.42);
-      color: white;
-    }
-    .mission-card {
-      position: relative;
-      background: rgba(244,239,230,.96);
-      color: var(--ink);
-      border-radius: 26px;
-      padding: 34px;
-      box-shadow: 0 30px 90px rgba(0,0,0,.38);
-      transform: rotate(1deg);
-      border: 1px solid rgba(255,255,255,.5);
-    }
-    .mission-card::before {
-      content: '';
-      position: absolute;
-      inset: 12px;
-      border: 1px dashed rgba(31,37,35,.22);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-    .mission-card > * { position: relative; z-index: 1; }
-    .mission-stamp {
-      width: 116px;
-      height: 116px;
-      border: 5px double var(--rust);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--rust);
-      font-family: 'Libre Franklin', sans-serif;
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: .05em;
-      transform: rotate(-10deg);
-      margin: -74px 0 20px auto;
-      background: rgba(244,239,230,.92);
-      box-shadow: 0 8px 22px rgba(31,37,35,.12);
-    }
-    .mission-card h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      margin-bottom: 14px;
-    }
-    .mission-card p { color: #4e5752; }
-    .mission-list {
-      list-style: none;
-      padding: 0;
-      margin: 25px 0 0;
-      display: grid;
-      gap: 13px;
-    }
-    .mission-list li {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 10px;
-      align-items: start;
-      padding-top: 13px;
-      border-top: 1px solid rgba(31,37,35,.12);
-    }
-    .mission-list b { display: block; }
-    .mission-list span { color: #69716d; font-size: .92rem; }
-    .road-note {
-      margin-top: 26px;
-      padding: 16px 18px;
-      background: var(--paper-2);
-      border-radius: 14px;
-      font-size: .9rem;
-      color: #515a55;
-    }
-    .thanks-footer {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: rgba(255,255,255,.62);
-      padding: 22px;
-      background: #111513;
-      font-size: .85rem;
-    }
-    .thanks-footer a { color: white; }
-    @media (max-width: 860px) {
-      .thanks-wrap { grid-template-columns: 1fr; gap: 64px; }
-      .mission-card { transform: none; }
-      .thanks-shell { padding: 44px 0 76px; }
-    }
-    @media (max-width: 520px) {
-      .mission-card { padding: 25px 21px; }
-      .mission-stamp { width: 94px; height: 94px; margin-top: -58px; font-size: .8rem; }
-      .thanks-copy h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+    .thanks-card h2{font-size:2.7rem;margin-bottom:10px}
+    .thanks-card p{color:#57605b}
+    .steps{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+    .steps li{display:grid;grid-template-columns:32px 1fr;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+    .steps strong{display:block}
+    .steps small{display:block;color:#6b716e}
+    @media(max-width:850px){
+      .thanks-grid{grid-template-columns:1fr;gap:66px}
+      .thanks-card{transform:none}
     }
   </style>
 </head>
-<body class="thanks-page">
-  <div class="topbar">SMITH & FOUND · SOMEWHERE OUT THERE, THE NEXT GOOD FIND IS WAITING.</div>
+<body class="thanks">
+  <div class="topbar">SMITH & FOUND · GOOD FINDS RARELY HAPPEN ON SCHEDULE.</div>
 
-  <main class="thanks-shell">
-    <div class="thanks-wrap">
+  <main class="thanks-wrap">
+    <div class="thanks-grid">
       <section class="thanks-copy">
-        <a class="thanks-brand" href="/"><span>SMITH</span> <span class="amp">&</span> <span>FOUND</span></a>
-        <div class="mission-kicker">MESSAGE RECEIVED · ANDY'S ON THE ROAD</div>
+        <a class="thanks-brand" href="/">SMITH <b>&</b> FOUND</a>
+        <div class="section-kicker gold" style="margin-top:30px">MESSAGE RECEIVED · ANDY'S ON THE ROAD</div>
         <h1 id="thanks-title">Mission accepted.</h1>
-        <p class="lead" id="thanks-lead">Your message made it to Smith & Found. Andy now has one more reason to look under the table, open the dusty box, and take the road that wasn't on the plan.</p>
+        <p id="thanks-lead">
+          Your message made it to Smith & Found. Andy now has one more reason to look under the table,
+          open the dusty box, and take the road that wasn’t on the plan.
+        </p>
         <div class="thanks-actions">
-          <a class="btn" href="/#finds">See Andy's Road Finds →</a>
-          <a class="btn ghost-light" href="/">Back to Smith & Found</a>
+          <a class="btn" href="/#finds">See Andy’s Road Finds →</a>
+          <a class="btn btn-ghost" href="/">Back to Smith & Found</a>
         </div>
       </section>
 
-      <aside class="mission-card" aria-label="What happens next">
+      <aside class="thanks-card">
         <div class="mission-stamp">MISSION<br>RECEIVED</div>
-        <span class="kicker">WHAT HAPPENS NEXT</span>
-        <h2 id="card-title">It's officially on the list.</h2>
-        <p id="card-copy">There are no guarantees in treasure hunting — but now Andy knows what to watch for while he's roaming.</p>
-        <ul class="mission-list">
-          <li><div>✓</div><div><b>Your message is in.</b><span>Netlify has recorded your submission for Smith & Found.</span></div></li>
-          <li><div>🔎</div><div><b>Andy keeps an eye out.</b><span>Estate sales, flea markets, antique shops, auctions and the unexpected stop along the way.</span></div></li>
-          <li><div>📞</div><div><b>If something clicks, Andy reaches out.</b><span>A promising match is worth a conversation.</span></div></li>
+        <span class="section-kicker">WHAT HAPPENS NEXT</span>
+        <h2 id="card-title">It’s officially on the list.</h2>
+        <p id="card-copy">There are no guarantees in treasure hunting — but now Andy knows what to watch for.</p>
+
+        <ul class="steps">
+          <li><span>✓</span><div><strong>Your message is in.</strong><small>Smith & Found has your submission.</small></div></li>
+          <li><span>🔎</span><div><strong>Andy keeps an eye out.</strong><small>Estate sales, flea markets, antique shops, auctions, and unexpected stops.</small></div></li>
+          <li><span>📞</span><div><strong>If something clicks, Andy reaches out.</strong><small>A promising match is worth a conversation.</small></div></li>
         </ul>
-        <div class="road-note">Good finds rarely happen on schedule. That's part of the fun.</div>
       </aside>
     </div>
   </main>
 
-  <footer class="thanks-footer">
-    Andy Smith · Finder of Interesting Things · <a href="mailto:minerinoregon@gmail.com">minerinoregon@gmail.com</a> · <a href="tel:+16516411990">651-641-1990</a>
-  </footer>
-
   <script>
     const from = new URLSearchParams(window.location.search).get('from');
+
     if (from === 'show-andy') {
       document.getElementById('thanks-title').textContent = 'Now you’ve got Andy curious.';
-      document.getElementById('thanks-lead').textContent = 'Your item is headed to Smith & Found. Andy will take a look when the road gives him a minute — and if it catches his eye, you may hear from him.';
+      document.getElementById('thanks-lead').textContent =
+        'Your item is headed to Smith & Found. Andy will take a look when the road gives him a minute — and if it catches his eye, you may hear from him.';
       document.getElementById('card-title').textContent = 'The mystery is in Andy’s hands.';
-      document.getElementById('card-copy').textContent = 'A photo and a story are often enough to start. Andy will look for the details that other people miss.';
-    } else if (from === 'find-it') {
+      document.getElementById('card-copy').textContent =
+        'A photo and a story are often enough to start. Andy will look for the details that other people miss.';
+    }
+
+    if (from === 'find-it') {
       document.getElementById('thanks-title').textContent = 'Your mission is on Andy’s list.';
-      document.getElementById('thanks-lead').textContent = 'You gave Andy something specific to hunt for. From here, he does what he loves: roam, notice, dig a little deeper, and see what turns up.';
+      document.getElementById('thanks-lead').textContent =
+        'You gave Andy something specific to hunt for. From here, he does what he loves: roam, notice, dig a little deeper, and see what turns up.';
     }
   </script>
 </body>

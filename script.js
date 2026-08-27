@@ -1,58 +1,72 @@
-async function loadJSON(path) {
-  const response = await fetch(path, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Could not load ${path}`);
-  return response.json();
-}
+async function loadFinds() {
+  const grid = document.getElementById('finds-grid');
+  if (!grid) return;
 
-function formatDate(value) {
   try {
-    return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(`${value}T12:00:00`));
-  } catch {
-    return value;
-  }
-}
+    const res = await fetch('/data/finds.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Unable to load finds');
+    const raw = await res.json();
+    const finds = Array.isArray(raw) ? raw : (Array.isArray(raw.items) ? raw.items : []);
 
-async function renderFinds() {
-  const target = document.querySelector('#finds-grid');
-  if (!target) return;
-  try {
-    const finds = await loadJSON('/data/finds.json');
-    target.innerHTML = finds.slice().reverse().map(item => `
+    if (finds.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <strong>Andy is still filling the notebook.</strong><br>
+          The first real road finds will show up here as he posts them from his phone.
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = finds.map(find => `
       <article class="find-card">
-        <img src="${item.image || 'https://source.unsplash.com/900x700/?vintage,antiques'}" alt="${item.title}" loading="lazy">
+        <img src="${escapeHtml(find.image || '')}" alt="${escapeHtml(find.title || 'Road find')}" loading="lazy">
         <div class="find-copy">
-          <div class="meta">${item.status || 'Road Find'} · ${formatDate(item.date)}</div>
-          <h3>${item.title}</h3>
-          <div class="small"><strong>${item.location || 'On the road'}</strong></div>
-          <p>${item.story}</p>
+          <div class="meta">${escapeHtml(find.date || '')}${find.location ? ' · ' + escapeHtml(find.location) : ''}</div>
+          <h3>${escapeHtml(find.title || 'Road Find')}</h3>
+          <p>${escapeHtml(find.story || '')}</p>
         </div>
       </article>
     `).join('');
-  } catch (error) {
-    target.innerHTML = '<div class="empty-state">Andy’s road finds will appear here soon.</div>';
+  } catch (err) {
+    grid.innerHTML = `<div class="empty-state">Road finds are coming soon.</div>`;
   }
 }
 
-async function renderStatus() {
-  const target = document.querySelector('#road-status');
-  if (!target) return;
+async function loadStatus() {
+  const holder = document.getElementById('road-status');
+  if (!holder) return;
+
   try {
-    const s = await loadJSON('/data/status.json');
-    target.innerHTML = `
+    const res = await fetch('/data/status.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Unable to load status');
+    const s = await res.json();
+
+    holder.innerHTML = `
+      <div class="status-mark">${escapeHtml(s.short || 'MIDWEST')}</div>
       <div>
-        <span class="kicker">${s.eyebrow}</span>
-        <div class="status-mark">${s.location}</div>
-      </div>
+        <span class="section-kicker gold">WHERE'S ANDY?</span>
+        <h3>${escapeHtml(s.title || 'Roaming the Midwest')}</h3>
+        <p>${escapeHtml(s.message || 'Somewhere between a small town, an estate sale, and a worthwhile detour.')}</p>
+      </div>`;
+  } catch (err) {
+    holder.innerHTML = `
+      <div class="status-mark">MIDWEST</div>
       <div>
-        <h3>${s.headline}</h3>
-        <p>${s.message}</p>
-        <p class="small" style="margin-top:10px">Updated ${s.updated}</p>
-      </div>
-    `;
-  } catch (error) {
-    target.innerHTML = '<p>Andy is out there looking.</p>';
+        <span class="section-kicker gold">WHERE'S ANDY?</span>
+        <h3>Roaming the Midwest</h3>
+        <p>Somewhere between a small town, an estate sale, and a worthwhile detour.</p>
+      </div>`;
   }
 }
 
-renderFinds();
-renderStatus();
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+loadFinds();
+loadStatus();
