@@ -86,7 +86,7 @@
           <p>Submit the hunt. Andy will keep it in mind while he roams. There’s no promise he’ll find one — that’s what makes finding one fun.</p>
         </div>
 
-        <form name="find-it" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+        <form name="find-it" method="POST" action="/thank-you.html?from=find-it" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
           <input type="hidden" name="form-name" value="find-it">
           <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="field"><label for="wanted">What are you looking for?</label><input id="wanted" name="wanted" required placeholder="Example: 1970s Hamm's beer sign"></div>
@@ -114,7 +114,7 @@
           <h2>Show Andy what you've got.</h2>
           <p class="lead">Cleaning out a basement, garage, collection or estate? Send a picture and a little context. Andy may recognize something worth a closer look.</p>
         </div>
-        <form name="show-andy" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+        <form name="show-andy" method="POST" action="/thank-you.html?from=show-andy" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
           <input type="hidden" name="form-name" value="show-andy">
           <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="field"><label for="item">What is it?</label><input id="item" name="item" required></div>
